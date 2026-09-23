@@ -336,7 +336,7 @@ All user-owned tables include a `user_id` column defaulting to `"default"`. This
 
 ## 9. LLM Integration
 
-All LLM calls go through LiteLLM to OpenRouter using the `finally` preset — the model string is `openrouter/@preset/finally`. Structured Outputs are used to interpret the results.
+All LLM calls go through LiteLLM to OpenRouter using the `finy` preset — the model string is `openrouter/@preset/finy`. Structured Outputs are used to interpret the results.
 
 There is an OPENROUTER_API_KEY in the .env file in the project root.
 
@@ -347,7 +347,7 @@ When the user sends a chat message, the backend:
 1. Loads the user's current portfolio context (cash, positions with P&L, watchlist with live prices, total portfolio value)
 2. Loads the last 20 messages from the `chat_messages` table (oldest trimmed — a fixed, deterministic window)
 3. Constructs a prompt with a system message, portfolio context, conversation history, and the user's new message
-4. Calls the LLM via LiteLLM → OpenRouter (`openrouter/@preset/finally`)
+4. Calls the LLM via LiteLLM → OpenRouter (`openrouter/@preset/finy`)
 5. Parses the complete structured JSON response
 6. Auto-executes any trades or watchlist changes specified in the response, recording the outcome of each
 7. Stores the message and executed actions in `chat_messages`

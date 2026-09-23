@@ -33,7 +33,7 @@ Everything runs in one Docker container on one port. There is no login and no se
 | Backend | Python 3.12, FastAPI, Uvicorn, managed with `uv` |
 | Real-time | Server-Sent Events (`/api/stream/prices`, native `EventSource`) |
 | Database | SQLite in WAL mode, created and seeded on first use |
-| AI | LiteLLM → OpenRouter (`openrouter/@preset/finally`) with structured JSON output |
+| AI | LiteLLM → OpenRouter (`openrouter/@preset/finy`) with structured JSON output |
 | Market data | Built-in GBM simulator, or the Massive (Polygon.io) REST API |
 | Testing | pytest, Vitest + React Testing Library, Playwright |
 | Packaging | Multi-stage Docker build (Node 20 → Python 3.12) |

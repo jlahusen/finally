@@ -64,7 +64,7 @@ backend/
 ### `llm` (llm-engineer)
 - `llm/routes.py` exposes `router = APIRouter()` with `GET /api/chat` and `POST /api/chat`; `app/main.py` includes it.
 - `llm.service.llm_available() -> bool` — `LLM_MOCK=true` or `OPENROUTER_API_KEY` non-empty.
-- Model: `openrouter/@preset/finally` via `litellm.acompletion`, structured output (Pydantic `response_format`).
+- Model: `openrouter/@preset/finy` via `litellm.acompletion`, structured output (Pydantic `response_format`).
 - Env loading: `app/main.py` calls `load_dotenv(<project root>/.env)` at import; nobody else loads .env.
 
 ## HTTP API (all JSON, same origin)

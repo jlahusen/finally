@@ -4,9 +4,9 @@ import litellm
 
 from llm.schema import LLMResponse, parse_response
 
-MODEL = "openrouter/@preset/finally"
+MODEL = "openrouter/@preset/finy"
 
-# LiteLLM's capability lookup can't resolve "@preset/finally" and prints a harmless "Provider List" banner.
+# LiteLLM's capability lookup can't resolve "@preset/finy" and prints a harmless "Provider List" banner.
 litellm.suppress_debug_info = True
 
 
