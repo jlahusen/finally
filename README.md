@@ -1,5 +1,8 @@
 # FinAlly — AI Trading Workstation
 
+<img width="2493" height="1308" alt="FinAlly" src="https://github.com/user-attachments/assets/b53a3f6a-5875-4548-abc4-63d84dcdd1e3" />
+
+
 FinAlly (Finance Ally) is a simulated trading terminal in the style of a Bloomberg workstation, with an AI copilot. It streams live prices, lets you trade a virtual $10,000 portfolio, and includes a chat assistant that can analyze your positions and place trades or edit your watchlist for you in plain English.
 
 Everything runs in one Docker container on one port. There is no login and no setup beyond an optional API key.
