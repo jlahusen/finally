@@ -1,0 +1,1 @@
+"""FinAlly SQLite persistence layer."""

@@ -1,0 +1,38 @@
+# E2E run (from project root):
+#   docker compose -f test/docker-compose.test.yml up --build --abort-on-container-exit --exit-code-from playwright
+# No bind mounts: the app DB lives on tmpfs (fresh every run) and the tests are baked into the runner image.
+# The service is not called "app": Chromium HSTS-preloads the .app TLD and would force https://app:8000.
+services:
+  finally:
+    build:
+      context: ..
+      dockerfile: Dockerfile
+    environment:
+      LLM_MOCK: "true"
+      OPENROUTER_API_KEY: ""
+      MASSIVE_API_KEY: ""
+    tmpfs:
+      - /app/db
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/api/health')"]
+      interval: 2s
+      timeout: 3s
+      retries: 30
+
+  playwright:
+    build:
+      context: .
+      dockerfile_inline: |
+        FROM mcr.microsoft.com/playwright:v1.63.0-noble
+        WORKDIR /work
+        COPY package.json package-lock.json ./
+        RUN npm ci
+        COPY playwright.config.ts ./
+        COPY tests ./tests
+    environment:
+      BASE_URL: http://finally:8000
+      CI: "true"
+    command: npx playwright test
+    depends_on:
+      finally:
+        condition: service_healthy

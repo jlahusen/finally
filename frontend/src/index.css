@@ -1,0 +1,57 @@
+@import '@fontsource/ibm-plex-sans-condensed/latin-400.css';
+@import '@fontsource/ibm-plex-sans-condensed/latin-500.css';
+@import '@fontsource/ibm-plex-sans-condensed/latin-600.css';
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'IBM Plex Sans Condensed', 'Arial Narrow', sans-serif;
+  --color-bg: #2f2f2f;
+  --color-panel: #383838;
+  --color-raised: #424242;
+  --color-line: #4b4b4b;
+  --color-ink: #e8e4da;
+  --color-muted: #9c978c;
+  --color-accent: #d6a345;
+  --color-primary: #459cd6;
+  --color-up: #46dd34;
+  --color-down: #dd4134;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-variant-numeric: tabular-nums;
+  font-size: 13px;
+}
+
+:focus-visible {
+  outline: 1px solid var(--color-primary);
+  outline-offset: 1px;
+}
+
+.price-cell {
+  transition: background-color 500ms ease-out;
+}
+
+.flash-up {
+  background-color: rgba(70, 221, 52, 0.18);
+  transition: none;
+}
+
+.flash-down {
+  background-color: rgba(221, 65, 52, 0.18);
+  transition: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .price-cell {
+    transition: none;
+  }
+}
